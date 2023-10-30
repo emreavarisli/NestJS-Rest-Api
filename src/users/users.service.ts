@@ -1,21 +1,12 @@
 import { Injectable } from '@nestjs/common';
-
+import { InjectModel } from '@nestjs/mongoose';
+import { Model } from 'mongoose';
+import { User, UserDocument } from './schemas/users.schema';
 @Injectable()
 export class UsersService {
-    private readonly users = [
-        {
-            id: "123",
-            username: "Fatih",
-            age: 18,
-        },
-        {
-            id: '321',
-            username: 'Emre',
-            age: 26,
-        },
-    ];
+    constructor(@InjectModel(User.name) private userModel: Model<UserDocument>) { }
 
-    findAll() {
-        return this.users;
+    async findAll() {
+        return await this.userModel.find();
     }
 }
