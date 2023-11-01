@@ -11,9 +11,9 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       type: 'postgres', // Veritabanı tipi PostgreSQL olarak ayarlanmalıdır.
       host: 'localhost', // Veritabanı sunucusunun adresi
       port: 5432, // PostgreSQL varsayılan portu genellikle 5432'dir
-      username: 'your_username', // PostgreSQL kullanıcı adınız
-      password: 'your_password', // PostgreSQL şifreniz
-      database: 'your_database_name', // Bağlanmak istediğiniz veritabanının adı
+      username: 'postgres', // PostgreSQL kullanıcı adınız
+      password: '6108', // PostgreSQL şifreniz
+      database: 'nestjs', // Bağlanmak istediğiniz veritabanının adı
       entities: [__dirname + '/**/*.entity{.ts,.js}'], // Veritabanı varlık (entity) dosyalarının yolunu belirtmek için, uygun şekilde güncellenmelidir.
       synchronize: true, // Bu seçenek geliştirme aşamasında kullanılabilir, fakat üretimde false olarak ayarlanması daha güvenlidir.
     }),

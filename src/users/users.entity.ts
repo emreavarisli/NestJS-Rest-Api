@@ -9,5 +9,8 @@ export class UserEntity {
     username: string;
 
     @Column()
+    gender: string;
+
+    @Column()
     age: number;
 }

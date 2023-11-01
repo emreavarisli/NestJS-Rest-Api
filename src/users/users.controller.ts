@@ -1,4 +1,4 @@
-import { Controller, Get, Param, Post, Body } from '@nestjs/common';
+import { Controller, Get, Param, Post, Body, Put, Delete } from '@nestjs/common';
 import { CreatePersonDto } from './dto/create-users-dto';
 import { UsersService } from './users.service';
 
@@ -7,17 +7,30 @@ export class UsersController {
     constructor(private usersService: UsersService) { }
 
     @Get()
-    getAll() {
-        return this.usersService.findAll();
+    async getAll() {
+        return await this.usersService.getUsers()
     }
 
     @Get(":id")
-    getOne(@Param("id") id) {
-        return `This id ${id}`;
+    async getOne(@Param("id") id) {
+        return await this.usersService.getUserById(id)
     }
 
     @Post()
-    create(@Body() allProps: CreatePersonDto) {
-        return `User created: Username is: ${allProps.username}`
+    async createUser(@Body() data: CreatePersonDto) {
+        return await this.usersService.createUser(data)
+    }
+
+    @Put(':id')
+    async updateUser(
+        @Param('id') id: number,
+        @Body() data: CreatePersonDto) {
+        return await this.usersService.updateUser(id, data)
+    }
+
+    @Delete(':id')
+    async deleteUser(
+        @Param('id') id: number) {
+        return await this.usersService.deleteUser(id)
     }
 }
