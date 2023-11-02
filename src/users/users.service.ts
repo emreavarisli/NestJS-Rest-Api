@@ -65,7 +65,7 @@ export class UsersService {
         try {
             const user = await this.getUserById(id)
 
-            await this.userRepository.delete(user)
+            await this.userRepository.delete(user.id)
 
             return user
         } catch (e) {

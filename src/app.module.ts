@@ -3,6 +3,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { UsersModule } from './users/users.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { PackagesModule } from './packages/packages.module';
 
 @Module({
   imports: [
@@ -17,6 +18,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       entities: [__dirname + '/**/*.entity{.ts,.js}'], // Veritabanı varlık (entity) dosyalarının yolunu belirtmek için, uygun şekilde güncellenmelidir.
       synchronize: true, // Bu seçenek geliştirme aşamasında kullanılabilir, fakat üretimde false olarak ayarlanması daha güvenlidir.
     }),
+    PackagesModule,
   ],
   controllers: [AppController],
   providers: [AppService],

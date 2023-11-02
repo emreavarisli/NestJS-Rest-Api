@@ -1,5 +1,6 @@
-import { IsNotEmpty, IsOptional, IsString } from "class-validator";
+import { IsNotEmpty, IsNumber, IsString } from "class-validator";
 import { UserEntity } from "../users.entity";
+import { Type } from "class-transformer";
 
 export class CreatePersonDto {
 
@@ -11,7 +12,8 @@ export class CreatePersonDto {
     @IsNotEmpty()
     gender: string;
 
-    @IsOptional()
+    @Type(() => Number)
+    @IsNumber()
     age: number;
 
     toEntity() {
